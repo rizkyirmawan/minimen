@@ -29,7 +29,7 @@
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="harga-pertanggungan">Harga Pertanggungan:</label>
-						<input type="text" class="form-control" id="harga-pertanggungan" value="{{ $claim->harga_pertanggungan }}" onkeypress="isNumber(event)" onkeyup="javascript:this.value=Comma(this.value);" required>
+						<input type="text" class="form-control" id="harga-pertanggungan" value="{{ number_format($claim->harga_pertanggungan) }}" onkeypress="isNumber(event)" onkeyup="javascript:this.value=Comma(this.value);" required>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="periode-awal">Periode Awal:</label>
@@ -92,7 +92,7 @@
 					</div>
 					x
 					<div class="col-md-3 mb-3">
-						<input type="text" class="form-control" id="or-price" value="{{ $claim->or_price }}" onkeyup="javascript:this.value=Comma(this.value);" required>
+						<input type="text" class="form-control" id="or-price" value="{{ number_format($claim->or_price) }}" onkeyup="javascript:this.value=Comma(this.value);" required>
 					</div>
 				</div>
 			</div>
