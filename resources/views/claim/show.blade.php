@@ -1,7 +1,36 @@
 @extends('app')
 
 @section('content')
-	<a href="{{ route('claims.index') }}" class="btn btn-dark mb-3">Kembali</a>
+	<div class="d-flex justify-content-between mb-3">
+		<a href="{{ route('claims.index') }}" class="btn btn-dark mb-3 me-2 p-2">Kembali</a>
+		<button data-bs-toggle="modal" data-bs-target="#upload-modal" class="btn btn-primary mb-3 p-2">Upload Foto Kerusakan</button>
+	</div>
+
+	<!-- Upload Modal -->
+	<div class="modal fade" id="upload-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="staticBackdropLabel">Upload Foto Kerusakan</h5>
+	      </div>
+	      <div class="modal-body">
+	        <form action="javascript:void(0)" enctype="multipart/form-data" id="upload-foto">
+	        	@csrf
+	        	<input type="hidden" id="claim-id" value="{{ $claim->id }}">
+	        	<div class="mb-3">
+				  <label for="foto" class="form-label">Foto Kerusakan:</label>
+				  <input class="form-control" name="foto[]" type="file" id="foto" multiple>
+				</div>
+				<button type="submit" class="btn btn-sm btn-primary" id="submit-upload">Upload</button>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<div class="card mb-3">
 		<div class="card-header">
 			Detail Data Klaim - {{ $claim->nomor_polis . ' (' . $claim->nama_tertanggung . ')' }}
@@ -93,8 +122,62 @@
 						</div>
 					</div>
 				</div>
+				@if(count($foto) != 0)
+				<div class="col-md-12 mt-3">
+					<div class="accordion accordion-flush" id="foto-kerusakan-accordion">
+					  <div class="accordion-item">
+					    <h2 class="accordion-header" id="flush-headingOne">
+					      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-foto-kerusakan" aria-expanded="false" aria-controls="flush-foto-kerusakan">
+					        Foto Kerusakan
+					      </button>
+					    </h2>
+					    <div id="flush-foto-kerusakan" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#foto-kerusakan-accordion">
+					    	@foreach($foto as $pic)
+					    	<img src="{{ asset('foto/' . $pic->foto) }}" class="img-fluid img-thumbnail mt-2" width="200">
+					    	@endforeach
+					    </div>
+					  </div>
+					</div>
+				</div>
+				@endif
 			</div>
 		</div>
 	</div>
 	
+@endsection
+
+@section('scripts')
+	<script>
+	$('#upload-foto').submit(function(e) {
+	    e.preventDefault();
+	  	  
+	    const claimID = $('#claim-id').val();
+	    let formData = new FormData(this);
+	    let fotoLength = $('#foto')[0].files.length; //Total Images
+	    let foto = $('#foto')[0];
+	    for (let i = 0; i < fotoLength; i++) {
+	       formData.append('foto' + i, foto.files[i]);
+	    }
+	    formData.append('fotoLength', fotoLength);
+	    formData.append('claimID', claimID);
+	    $('#submit-upload').addClass('disabled');
+	  
+	     $.ajax({
+	        type: 'POST',
+	        url: "{{ route('claim.uploadFotoKerusakan') }}",
+	        data: formData,
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        success: (data) => {
+	           this.reset();
+	           alert('Foto kerusakan berhasil diupload.');
+	           location.reload();
+	        },
+	        error: function(data){
+	           console.log(data);
+	         }
+	       });
+	   });
+	</script>
 @endsection

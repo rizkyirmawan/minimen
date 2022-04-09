@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Models\Claim;
 use App\Models\Bengkel;
 use App\Models\Merk;
 use App\Models\Jenis;
+use App\Models\Foto;
 use Illuminate\Http\Request;
 
 class ClaimController extends Controller
@@ -40,7 +42,9 @@ class ClaimController extends Controller
     {
         $title = 'Detail Claim ' . $claim->nomor_polis;
 
-        return view('claim.show', compact('title', 'claim'));
+        $foto = Foto::where('claim_id', $claim->id)->get();
+
+        return view('claim.show', compact('title', 'claim', 'foto'));
     }
 
     // Edit
@@ -67,9 +71,49 @@ class ClaimController extends Controller
     public function destroy($id)
     {
         $claim = Claim::find($id);
+
+        $foto = Foto::where('claim_id', $id)->get();
+
+        if ($foto) {
+            foreach ($foto as $pic) {
+                File::delete(public_path('foto/' . $pic->foto));
+            }
+        }
+
+        $claim->foto()->delete();
+
         $claim->delete();
 
         return response()->json(204);
+    }
+
+    // Upload Foto Kerusakan
+    public function uploadFotoKerusakan(Request $request)
+    {
+        $validatedData = $request->validate([
+            'foto' => 'required',
+            'foto.*' => 'mimes:jpg,png,jpeg,gif,svg'
+        ]);
+
+        if($request->fotoLength > 0) {  
+           for ($i = 0; $i < $request->fotoLength; $i++) 
+           {
+               if ($request->hasFile('foto' . $i)) 
+                {
+                    $file = $request->file('foto' . $i);
+                    $foto = uniqid() . '-' . $file->getClientOriginalName();
+                    $file->move('foto', $foto);
+                    $insert[$i]['claim_id'] = $request->claimID;
+                    $insert[$i]['foto'] = $foto;
+                }
+           }
+
+            Foto::insert($insert);
+            return response()->json(['success' => 'Foto kerusakan berhasil diupload.']);
+         
+        } else {
+           return response()->json(['message' => 'Please try again.']);
+        }
     }
 
     // Get Jenis by Merk ID

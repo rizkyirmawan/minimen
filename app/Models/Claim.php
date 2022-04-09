@@ -27,4 +27,9 @@ class Claim extends Model
     {
         return $this->hasOne(Bengkel::class);
     }
+
+    public function foto()
+    {
+        return $this->hasMany(Foto::class);
+    }
 }
