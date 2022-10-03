@@ -6,7 +6,7 @@
 		@csrf
 		<div class="card">
 			<div class="card-header">
-				Form Tambah Data Claim
+				Tambah Data Claim
 			</div>
 			<div class="card-body">
 				<div class="row">
