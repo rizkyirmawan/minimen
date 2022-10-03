@@ -4,7 +4,7 @@
 	<a href="{{ route('claims.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 	<div class="card">
 		<div class="card-header">
-			Data Claim
+			Lihat Data Claim
 		</div>
 		<div class="card-body">
 			<table class="table table-hover table-bordered">
@@ -25,9 +25,9 @@
 						<td>{{ $claim->nama_tertanggung }}</td>
 						<td>{{ $claim->tanggal_kejadian }}</td>
 						<td>
-							<a href="{{ route('claims.show', ['claim' => $claim->id]) }}" class="btn btn-primary btn-sm">Detail</a> 
-							<a href="{{ route('claims.edit', ['claim' => $claim->id]) }}" class="btn btn-success btn-sm">Edit</a> 
-							<a href="#" onclick="deleteClaim({{ $claim->id }})" class="btn btn-danger btn-sm">Hapus</a> 
+							<a href="{{ route('claims.show', ['claim' => $claim->id]) }}" class="btn btn-primary btn-sm">Detail</a>
+							<a href="{{ route('claims.edit', ['claim' => $claim->id]) }}" class="btn btn-success btn-sm">Edit</a>
+							<a href="#" onclick="deleteClaim({{ $claim->id }})" class="btn btn-danger btn-sm">Hapus</a>
 						</td>
 					</tr>
 					@endforeach
@@ -35,7 +35,7 @@
 			</table>
 		</div>
 	</div>
-	
+
 @endsection
 
 @section('scripts')
