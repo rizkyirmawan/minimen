@@ -6,7 +6,7 @@
 		@csrf
 		<div class="card">
 			<div class="card-header">
-				Edit Data Claim
+				Form Edit Data Claim
 			</div>
 			<div class="card-body">
 				<div class="row">
