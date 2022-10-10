@@ -13,6 +13,10 @@ class Bengkel extends Model
 
     protected $guarded = [];
 
+    /**
+     * [claim description]
+     * @return [type] [description]
+     */
     public function claim()
     {
         return $this->belongsTo(Claim::class);
