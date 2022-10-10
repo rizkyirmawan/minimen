@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use File;
+use App\Models\Merk;
+use App\Models\Foto;
+use App\Models\Jenis;
 use App\Models\Claim;
 use App\Models\Bengkel;
-use App\Models\Merk;
-use App\Models\Jenis;
-use App\Models\Foto;
 use Illuminate\Http\Request;
 
 class ClaimController extends Controller
 {
-    // Index
+    /**
+     * [index description]
+     * @return [type] [description]
+     */
     public function index()
     {
         $claims = Claim::orderBy('created_at', 'desc')->get();
@@ -20,7 +23,10 @@ class ClaimController extends Controller
         return view('claim.index', compact('claims', 'title'));
     }
 
-    // Create
+    /**
+     * [create description]
+     * @return [type] [description]
+     */
     public function create()
     {
         $title = 'Tambah Data Claim';
@@ -30,14 +36,22 @@ class ClaimController extends Controller
         return view('claim.create', compact('claim', 'title', 'bengkel', 'merk'));
     }
 
-    // Store
+    /**
+     * [store description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function store(Request $request)
     {
         $res = Claim::create($request->all());
         return response()->json($res, 201);
     }
 
-    // Show
+    /**
+     * [show description]
+     * @param  Claim  $claim [description]
+     * @return [type]        [description]
+     */
     public function show(Claim $claim)
     {
         $title = 'Detail Claim ' . $claim->nomor_polis;
@@ -47,7 +61,11 @@ class ClaimController extends Controller
         return view('claim.show', compact('title', 'claim', 'foto'));
     }
 
-    // Edit
+    /**
+     * [edit description]
+     * @param  Claim  $claim [description]
+     * @return [type]        [description]
+     */
     public function edit(Claim $claim)
     {
         $title = 'Edit Data Claim';
@@ -58,7 +76,11 @@ class ClaimController extends Controller
         return view('claim.edit', compact('claim', 'title', 'bengkel', 'merk', 'jenis'));
     }
 
-    // Update
+    /**
+     * [update description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function update(Request $request)
     {
         $claim = Claim::find($request->id);
@@ -67,7 +89,11 @@ class ClaimController extends Controller
         return response()->json($claim, 200);
     }
 
-    // Delete
+    /**
+     * [update description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function destroy($id)
     {
         $claim = Claim::find($id);
@@ -87,7 +113,11 @@ class ClaimController extends Controller
         return response()->json(204);
     }
 
-    // Upload Foto Kerusakan
+    /**
+     * [uploadFotoKerusakan description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function uploadFotoKerusakan(Request $request)
     {
         $validatedData = $request->validate([
@@ -116,7 +146,11 @@ class ClaimController extends Controller
         }
     }
 
-    // Get Jenis by Merk ID
+    /**
+     * [uploadFotoKerusakan description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function getJenisByMerkID($merk)
     {
         $res = Jenis::where('merk_id', '=', $merk)->get();
