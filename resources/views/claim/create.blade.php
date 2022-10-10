@@ -12,71 +12,141 @@
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="nomor-polis">Nomor Polis:</label>
-						<input type="text" class="form-control" id="nomor-polis" required>
+						<input
+              type="text"
+              id="nomor-polis"
+              class="form-control"
+              required="true"
+            />
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="nama-tertanggung">Nama Tertanggung:</label>
-						<input type="text" class="form-control" id="nama-tertanggung" required>
+						<input
+              type="text"
+              id="nama-tertanggung"
+              class="form-control"
+              required="true"
+            />
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="kondisi-pertanggungan">Kondisi Pertanggungan:</label>
-						<select id="kondisi-pertanggungan" class="form-control">
-							<option selected disabled>Pilih Kondisi Pertanggungan</option>
+						<select
+              id="kondisi-pertanggungan"
+              class="form-control"
+            >
+							<option selected="true" disabled="true">Pilih Kondisi Pertanggungan</option>
 							<option value="Comprehensive">Comprehensive</option>
 							<option value="TLO">TLO</option>
 						</select>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="harga-pertanggungan">Harga Pertanggungan:</label>
-						<input type="text" class="form-control" id="harga-pertanggungan" onkeypress="isNumber(event)" onkeyup="javascript:this.value=Comma(this.value);" required>
+						<input
+              type="text"
+              id="harga-pertanggungan"
+              class="form-control"
+              onkeypress="isNumber(event)"
+              onkeyup="javascript:this.value=Comma(this.value);"
+              required="true"
+            />
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="periode-awal">Periode Awal:</label>
-						<input type="date" class="form-control" id="periode-awal" required>
+						<input
+              type="date"
+              id="periode-awal"
+              class="form-control"
+              required="true"
+            />
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="periode-akhir">Periode Akhir:</label>
-						<input type="date" class="form-control" id="periode-akhir" required>
+						<input
+              type="date"
+              class="form-control"
+              id="periode-akhir"
+              required="true"
+            />
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="tanggal-kejadian">Tanggal Kejadian:</label>
-						<input type="date" class="form-control" id="tanggal-kejadian" required>
+						<input
+              type="date"
+              class="form-control"
+              id="tanggal-kejadian"
+              required="true"
+            />
 					</div>
 					<div class="col-md-12 mb-3">
 						<label for="kronologis-kejadian">Kronologis Kejadian:</label>
-						<textarea id="kronologis-kejadian" cols="30" rows="5" class="form-control"></textarea>
+						<textarea
+              d="kronologis-kejadian"
+              cols="30"
+              rows="5"
+              class="form-control"
+            ></textarea>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="nomor-polisi">Nomor Polisi:</label>
-						<input type="text" class="form-control" id="nomor-polisi" required>
+						<input
+              type="text"
+              class="form-control"
+              id="nomor-polisi"
+              required="true"
+            />
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="nomor-rangka">Nomor Rangka:</label>
-						<input type="text" class="form-control" id="nomor-rangka" required>
+						<input
+              type="text"
+              class="form-control"
+              id="nomor-rangka"
+              required="true"
+            />
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="nomor-mesin">Nomor Mesin:</label>
-						<input type="text" class="form-control" id="nomor-mesin" required>
+						<input
+              type="text"
+              class="form-control"
+              id="nomor-mesin"
+              required="true"
+            >
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="merk-id">Merk:</label>
 						<select id="merk-id" class="form-control">
-							<option selected disabled>Pilih Merk Kendaraan</option>
+							<option
+                selected="true"
+                disabled="true"
+              >
+                Pilih Merk Kendaraan
+              </option>
 							@foreach($merk as $brand)
-							<option value="{{ $brand->id }}">{{ $brand->merk }}</option>
+							 <option value="{{ $brand->id }}">{{ $brand->merk }}</option>
 							@endforeach
 						</select>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="jenis-id">Jenis:</label>
 						<select id="jenis-id" class="form-control">
-							<option selected disabled>Pilih Jenis Kendaraan</option>
+							<option
+                selected="true"
+                disabled="true"
+              >
+                Pilih Jenis Kendaraan
+              </option>
 						</select>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="bengkel-id">Bengkel:</label>
 						<select id="bengkel-id" class="form-control">
-							<option selected disabled>Pilih Bengkel Rekanan</option>
+							<option
+                selected="true"
+                disabled="true"
+              >
+                Pilih Bengkel Rekanan
+              </option>
 							@foreach($bengkel as $repairer)
 							<option value="{{ $repairer->id }}">{{ $repairer->bengkel . ' - ' . $repairer->lokasi }}</option>
 							@endforeach
@@ -84,7 +154,12 @@
 					</div>
 					<label for="or-count">Resiko Sendiri:</label>
 					<div class="col-md-3 mb-3">
-						<input type="number" class="form-control" id="or-count" required>
+						<input
+              type="number"
+              class="form-control"
+              id="or-count"
+              required="true"
+            >
 					</div>
 					x
 					<div class="col-md-3 mb-3">
