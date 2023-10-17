@@ -13,11 +13,19 @@ class Merk extends Model
 
     protected $guarded = [];
 
+    /**
+     * [claim description]
+     * @return [type] [description]
+     */
     public function claim()
     {
         return $this->hasOne(Claim::class);
     }
 
+    /**
+     * [jenis description]
+     * @return [type] [description]
+     */
     public function jenis()
     {
         return $this->hasMany(Jenis::class);
