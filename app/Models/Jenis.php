@@ -13,6 +13,10 @@ class Jenis extends Model
 
     protected $guarded = [];
 
+    /**
+     * [merk description]
+     * @return [type] [description]
+     */
     public function merk()
     {
         return $this->hasOne(Merk::class);
