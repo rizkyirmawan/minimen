@@ -10,7 +10,7 @@
 			</div>
 			<div class="card-body">
 				<div class="row">
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="nomor-polis">Nomor Polis:</label>
 						<input
               type="text"
@@ -19,7 +19,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="nama-tertanggung">Nama Tertanggung:</label>
 						<input
               type="text"
@@ -28,7 +28,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="kondisi-pertanggungan">Kondisi Pertanggungan:</label>
 						<select
               id="kondisi-pertanggungan"
@@ -39,7 +39,7 @@
 							<option value="TLO">TLO</option>
 						</select>
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="harga-pertanggungan">Harga Pertanggungan:</label>
 						<input
               type="text"
@@ -50,7 +50,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="periode-awal">Periode Awal:</label>
 						<input
               type="date"
@@ -59,7 +59,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="periode-akhir">Periode Akhir:</label>
 						<input
               type="date"
@@ -68,7 +68,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="tanggal-kejadian">Tanggal Kejadian:</label>
 						<input
               type="date"
@@ -86,7 +86,7 @@
               class="form-control"
             ></textarea>
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="nomor-polisi">Nomor Polisi:</label>
 						<input
               type="text"
@@ -95,7 +95,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="nomor-rangka">Nomor Rangka:</label>
 						<input
               type="text"
@@ -104,7 +104,7 @@
               required="true"
             />
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-lg-4 col-md-4 col-xs-12 mb-3">
 						<label for="nomor-mesin">Nomor Mesin:</label>
 						<input
               type="text"
@@ -113,7 +113,7 @@
               required="true"
             >
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="merk-id">Merk:</label>
 						<select id="merk-id" class="form-control">
 							<option
@@ -127,7 +127,7 @@
 							@endforeach
 						</select>
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="jenis-id">Jenis:</label>
 						<select id="jenis-id" class="form-control">
 							<option
@@ -138,7 +138,7 @@
               </option>
 						</select>
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 col-md-6 col-xs-12 mb-3">
 						<label for="bengkel-id">Bengkel:</label>
 						<select id="bengkel-id" class="form-control">
 							<option
@@ -153,7 +153,7 @@
 						</select>
 					</div>
 					<label for="or-count">Resiko Sendiri:</label>
-					<div class="col-md-3 mb-3">
+					<div class="col-lg-3 col-md-3 col-xs-12 mb-3">
 						<input
               type="number"
               class="form-control"
@@ -162,7 +162,7 @@
             >
 					</div>
 					x
-					<div class="col-md-3 mb-3">
+					<div class="col-lg-3 col-md-3 col-xs-12 mb-3">
 						<input type="text" class="form-control" id="or-price" onkeyup="javascript:this.value=Comma(this.value);" required>
 					</div>
 				</div>
